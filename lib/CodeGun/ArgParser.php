@@ -71,6 +71,36 @@ class ArgParser
     }
 
     /**
+     * Get or set program
+     *
+     * @param string $program
+     * @return string
+     */
+    public function program($program = null)
+    {
+        if ($program) {
+            $this->program = $program;
+        }
+
+        return $this->program;
+    }
+
+    /**
+     * Get or set argv
+     *
+     * @param array $argv
+     * @return array
+     */
+    public function argv(array $argv = null)
+    {
+        if ($argv) {
+            $this->argv = $argv;
+        }
+
+        return $this->argv;
+    }
+
+    /**
      * Add arguments
      *
      * @example
