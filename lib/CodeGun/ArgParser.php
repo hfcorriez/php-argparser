@@ -61,9 +61,9 @@ class ArgParser
      * @param array  $argv
      * @param string $usage
      */
-    public function __construct($argv = array(), $usage = null)
+    public function __construct(array $argv = null, $usage = null)
     {
-        if (!$argv) $argv = $_SERVER['argv'];
+        if ($argv === null) $argv = $_SERVER['argv'];
 
         $this->program = array_shift($argv);
         $this->argv = array_values($argv);
