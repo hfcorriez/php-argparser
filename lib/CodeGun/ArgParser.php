@@ -7,7 +7,7 @@ class ArgParser
     // Args options
     protected $options = array();
 
-    protected $maps = array();
+    // Saved values
     protected $values = array();
 
     // Hash args
@@ -165,7 +165,6 @@ class ArgParser
         $id = uniqid();
 
         // Save options
-        $this->maps[$id] = $params;
         $this->values[$id] = null;
         $this->options[$id] = $option;
 
