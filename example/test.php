@@ -9,5 +9,3 @@ $arg_parser->add(array('--long', '-l'), array('help' => 'long arguments', 'enum'
 $args = $arg_parser->parse();
 
 var_dump($args, $arg_parser->error());
-
-echo $arg_parser->help();
