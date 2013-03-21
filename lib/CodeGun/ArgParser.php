@@ -199,9 +199,7 @@ class ArgParser
 
                     // If expect value?
                     if ($expect_param) {
-                        $id = $this->ids[$expect_param];
-
-                        if ($this->options[$id]['type'] == 'bool') {
+                        if (in_array($this->option($expect_param, 'type', false), array(false, 'bool'))) {
                             // Set true if expect name is bool
                             $this->params[$expect_param] = true;
                             $expect_param = false;
@@ -225,6 +223,9 @@ class ArgParser
                                 if (!$value) {
                                     // Expect value
                                     $expect_param = $shorts[0];
+
+                                    // Pre-set
+                                    if (in_array($this->option($shorts[0], 'type', false), array(false, 'bool'))) $this->params[$shorts[0]] = true;
                                 } else {
                                     $this->value($expect_param, $value);
                                 }
@@ -244,6 +245,9 @@ class ArgParser
                             if (!$value) {
                                 // Expect value
                                 $expect_param = $long;
+
+                                // Pre-set
+                                if (in_array($this->option($long, 'type', false), array(false, 'bool'))) $this->params[$long] = true;
                             } else {
                                 $this->value($long, $value);
                             }
@@ -466,14 +470,14 @@ class ArgParser
     }
 
     /**
+     * Build argument
+     *
      * @param string $param
      * @return string
      */
     protected function buildArg($param)
     {
-        $id = $this->ids[$param];
-
-        if (!empty($this->options[$id]['position'])) {
+        if (!empty($this->options[$this->ids[$param]]['position'])) {
             return $param;
         }
 
