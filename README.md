@@ -5,7 +5,7 @@ ArgParser is a PHP library that help you parse the CLI arguments
 ## Examples
 
 ```php
-$arg_parser = new \CodeGun\ArgParser();
+$arg_parser = new \Pagon\ArgParser();
 
 // Add a short arguments and support enum type
 $arg_parser->add('a', array('help' => 'a long time with he happy', 'enum' => array(
